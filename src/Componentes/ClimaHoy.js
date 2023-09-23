@@ -16,11 +16,20 @@ function ClimaHoy(){
                         <img src="https://www.smn.gob.ar/sites/all/themes/smn/img/weather-icons/37.png"/>
                         <p>Mayormente nublado</p>
                     </div>
-                    <div className="aitem-2">
+                    <div className="item-2">
                         <h3>Hoy</h3>
                         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" />
                         <p>21°</p>
                     </div>
+                </div>
+                <div className="servicio">
+                        <h3>Datos</h3>
+                        <div className="ser-1"></div>
+                        <div className="ser-2"></div>
+                        <div className="ser-3"></div>
+                        <div className="ser-4"></div>
+                        <div className="ser-5"></div>
+                        <div className="ser-6"></div>
                 </div>
         </body>
     );
