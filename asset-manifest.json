@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/practico-api/static/css/main.365547cc.css",
-    "main.js": "/practico-api/static/js/main.e55e1bc7.js",
+    "main.js": "/practico-api/static/js/main.c095ca9a.js",
     "static/js/787.f66cf832.chunk.js": "/practico-api/static/js/787.f66cf832.chunk.js",
     "static/media/Barra de clima del dia.jpg": "/practico-api/static/media/Barra de clima del dia.fd7802072e489e20c27e.jpg",
     "index.html": "/practico-api/index.html",
     "main.365547cc.css.map": "/practico-api/static/css/main.365547cc.css.map",
-    "main.e55e1bc7.js.map": "/practico-api/static/js/main.e55e1bc7.js.map",
+    "main.c095ca9a.js.map": "/practico-api/static/js/main.c095ca9a.js.map",
     "787.f66cf832.chunk.js.map": "/practico-api/static/js/787.f66cf832.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.365547cc.css",
-    "static/js/main.e55e1bc7.js"
+    "static/js/main.c095ca9a.js"
   ]
 }
