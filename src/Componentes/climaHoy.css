@@ -1,10 +1,35 @@
 .contenedor{
     display: flex;
-    gap: 10px;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 70px;
+    
 }
 
 .completo{
     display: flex;   
-    flex-direction: column;
+    /*flex-direction:row-reverse;*/
+    gap: 50px;
+}
+
+.servicio{
+    width: 80%;
+    height: 700px;
+    margin: 0 auto;
+    border: 10px solid var(--clr-dark);
+    display: flex;
+    gap: 5px;
+}
+
+.item{
+    width: 150px;
+    height: 150px;
+    background-color:rgb(63, 11, 11);
+    padding: 1em;
+    font-weight: 700;
+    color: var(--clr-light);
+    text-align: center;
+    border: 10px solid var(--clr-accent);
+    border-radius: 10px;
 }

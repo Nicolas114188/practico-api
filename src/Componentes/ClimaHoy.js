@@ -12,7 +12,7 @@ function ClimaHoy(){
                 
                 <div className="completo">
                     <div className="item-1">
-                        <h3>Mañana</h3>
+                        <h3>Actualidad</h3>
                         <img src="https://www.smn.gob.ar/sites/all/themes/smn/img/weather-icons/37.png"/>
                         <p>Mayormente nublado</p>
                     </div>
@@ -23,13 +23,25 @@ function ClimaHoy(){
                     </div>
                 </div>
                 <div className="servicio">
-                        <h3>Datos</h3>
-                        <div className="ser-1"></div>
-                        <div className="ser-2"></div>
-                        <div className="ser-3"></div>
-                        <div className="ser-4"></div>
-                        <div className="ser-5"></div>
-                        <div className="ser-6"></div>
+                        <h3>Datos:</h3>
+                        <div className="item ser-1">
+                            <p>indice UV</p>
+                        </div>
+                        <div className="item ser-2">
+                            <p>Velocidad del viento</p>
+                        </div>
+                        <div className="item ser-3">
+                            <p>Hora del sol</p>
+                        </div>
+                        <div className="item ser-4">
+                            <p>Humedad</p>
+                        </div>
+                        <div className="item ser-5">
+                            <p>Visibilidad</p>
+                        </div>
+                        <div className="item ser-6">
+                            <p>Calidad del aire</p>
+                        </div>
                 </div>
         </body>
     );
