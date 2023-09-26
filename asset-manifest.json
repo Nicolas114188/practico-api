@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/practico-api/static/css/main.9e037b21.css",
-    "main.js": "/practico-api/static/js/main.b25f2da4.js",
+    "main.css": "/practico-api/static/css/main.8f19d069.css",
+    "main.js": "/practico-api/static/js/main.cc9c463c.js",
     "static/js/787.f66cf832.chunk.js": "/practico-api/static/js/787.f66cf832.chunk.js",
     "static/media/Barra de clima del dia.jpg": "/practico-api/static/media/Barra de clima del dia.fd7802072e489e20c27e.jpg",
     "index.html": "/practico-api/index.html",
-    "main.9e037b21.css.map": "/practico-api/static/css/main.9e037b21.css.map",
-    "main.b25f2da4.js.map": "/practico-api/static/js/main.b25f2da4.js.map",
+    "main.8f19d069.css.map": "/practico-api/static/css/main.8f19d069.css.map",
+    "main.cc9c463c.js.map": "/practico-api/static/js/main.cc9c463c.js.map",
     "787.f66cf832.chunk.js.map": "/practico-api/static/js/787.f66cf832.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e037b21.css",
-    "static/js/main.b25f2da4.js"
+    "static/css/main.8f19d069.css",
+    "static/js/main.cc9c463c.js"
   ]
 }
