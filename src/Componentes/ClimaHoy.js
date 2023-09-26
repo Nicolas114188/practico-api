@@ -24,6 +24,7 @@ function ClimaHoy(){
                 </div>
                 <div className="servicio">
                         <h3>Datos:</h3>
+                        <br/>
                         <div className="item ser-1">
                             <p>indice UV</p>
                         </div>
