@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/practico-api/static/css/main.f4d4ee92.css",
-    "main.js": "/practico-api/static/js/main.42cf701d.js",
+    "main.js": "/practico-api/static/js/main.d7c4b59e.js",
     "static/js/787.f66cf832.chunk.js": "/practico-api/static/js/787.f66cf832.chunk.js",
     "static/media/presimitaciones.svg": "/practico-api/static/media/presimitaciones.08541e07e077b7ee7270858706d7407c.svg",
     "static/media/nublado.svg": "/practico-api/static/media/nublado.e206e5214ce343d08aaa456fb2b2e061.svg",
     "static/media/soliado.svg": "/practico-api/static/media/soliado.2909a175d21b0bc0a0c5cc4d70ede315.svg",
     "index.html": "/practico-api/index.html",
     "main.f4d4ee92.css.map": "/practico-api/static/css/main.f4d4ee92.css.map",
-    "main.42cf701d.js.map": "/practico-api/static/js/main.42cf701d.js.map",
+    "main.d7c4b59e.js.map": "/practico-api/static/js/main.d7c4b59e.js.map",
     "787.f66cf832.chunk.js.map": "/practico-api/static/js/787.f66cf832.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f4d4ee92.css",
-    "static/js/main.42cf701d.js"
+    "static/js/main.d7c4b59e.js"
   ]
 }
