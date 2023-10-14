@@ -1,32 +1,23 @@
 import React from "react";
 import "./climaHoy.css";
-import nublado from "../Imagenes/nublado.svg";
-import soliado from "../Imagenes/soliado.svg";
-import precipitacion from"../Imagenes/presimitaciones.svg";
+import imagenes from "./imagenes";
 import datosClima from "./api.json";
 import {useState, useEffect} from "react";
-//https://api.open-meteo.com/v1/forecast?latitude=-31.4135&longitude=-64.181&current=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m,winddirection_10m&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,precipitation,visibility&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=America%2FSao_Paulo
+
 function ClimaHoy(){
     const [datostiempo, setdatostiempo] =useState(null);
-    const[cargando,setcargardo]=useState(false);
-    /*var tiempo=[];
-    for(let i=0;i<datosClima.hourly.time.length;i++)
-    {
-        tiempo[i]=datosClima.hourly.time[i];
-    };
-    var tempList=[];*/
-    /*for(let i=0;i<datosClima.hourly.temperature_2m.length;i++)
-    {
-        tempList[i]=datosClima.hourly.temperature_2m[i];
-    };  */
+    let pronostico="";
+    let imgPronostico="";
+    let numLluvia=0;
+    // Este useEffect permite traer datos del clima desde la Api y es convertido en formato json "objecto"
     useEffect(()=>{
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=-31.4135&longitude=-64.181&current=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m,winddirection_10m&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,precipitation,visibility&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=America%2FSao_Paulo')
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=-31.4135&longitude=-64.181&current=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m&hourly=temperature_2m,relativehumidity_2m,rain,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&timezone=America%2FSao_Paulo')
         .then(resp=>resp.json()).then(data=>{
             setdatostiempo(data);
             //console.log(data);
         }).catch(ex =>{console.error(ex);})
     },[])
-    //console.log(datostiempo);
+    // Consultamos si variable datostiempo es null si lo es mostramos un mensaje que se esta cargando los dato hasta que la api devuelva objecto
     if(datostiempo==null)
     {
         return(
@@ -36,18 +27,47 @@ function ClimaHoy(){
         );
     }else
     {
+        // Se pregunta si como es el pronostico con if  else
+        if(datostiempo.current.cloudcover>0)
+             {
 
+                 if(datostiempo.current.precipitation>0)
+                {
+                    for(let i=0;i<datostiempo.hourly.rain.length;i++)
+                    {
+                         numLluvia=numLluvia+datostiempo.hourly.rain[i];
+                    }
+                    if(numLluvia>0)
+                    {
+                        pronostico="lluvia";
+                        imgPronostico=imagenes.lluvia;
+                    }else{
+                        pronostico="precipitaciones";
+                        imgPronostico=imagenes.precipitaciones;
+                    }
+                
+                }else{
+                    pronostico="nublado";
+                    imgPronostico=imagenes.nublado;
+                }
+            
+             }else
+             {
+                pronostico="soliado";
+                imgPronostico=imagenes.soliado;
+             }
+      // retorna los datos desde api pronostico del clima             
     return(
         <div className="contenedor">
             <div className="item-1">
                     <div className="Actualidad">
                         Actualidad
-                        <img src={soliado} alt="soliado"/>
-                        <p>Soleado</p>
+                        <img src={imgPronostico} alt={pronostico}/>
+                        <p>{pronostico}</p>
                     </div>
                     <div className="hoy">
                         Hoy
-                        <img src={soliado} alt="soliado" />
+                        <img src={imgPronostico} alt={pronostico} />
                         <p>{datostiempo.current.temperature_2m} {datostiempo.hourly_units.temperature_2m}</p>
                     </div>
                     <div className="dia">
