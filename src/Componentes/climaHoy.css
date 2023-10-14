@@ -2,7 +2,7 @@
 .item-2{grid-area: maximaMinima;}
 .item-3{grid-area: duranteDia;}
 .item-4{grid-area: datos;}
-/*.item-4{grid-area: datos;}*/
+
 .contenedor{
     display: grid; 
     grid-template-areas: 
@@ -27,34 +27,6 @@
     width: 20px;
     align-self: flex-end;
     background-color: chartreuse;
-}
-
-.b-1{
-    height: 20px;
-}
-.b-2{
-    height: 12px;
-}
-.b-3{
-    height: 20%;
-}
-.b-4{
-    height: 35px;
-}
-.b-5{
-    height: 36px;
-}
-.b-6{
-    height: 50px;
-}
-.b-7{
-    height: 30px;
-}
-.b-8{
-    height: 25px;
-}
-.b-9{
-    height: 18px;
 }
 
 .paramDia{

@@ -5,7 +5,7 @@ import datosClima from "./api.json";
 import {useState, useEffect} from "react";
 
 function ClimaHoy(){
-    const [datostiempo, setdatostiempo] =useState(null);
+    const [datostiempo, setDatostiempo] =useState(null);
     let pronostico="";
     let imgPronostico="";
     let numLluvia=0;
@@ -13,7 +13,7 @@ function ClimaHoy(){
     useEffect(()=>{
         fetch('https://api.open-meteo.com/v1/forecast?latitude=-31.4135&longitude=-64.181&current=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m&hourly=temperature_2m,relativehumidity_2m,rain,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&timezone=America%2FSao_Paulo')
         .then(resp=>resp.json()).then(data=>{
-            setdatostiempo(data);
+            setDatostiempo(data);
             //console.log(data);
         }).catch(ex =>{console.error(ex);})
     },[])
@@ -86,7 +86,7 @@ function ClimaHoy(){
             </div>
             <div className="item-3">
                 <h3>Durante el día:</h3>
-                
+                {/* temperatura durante el día maxima y minima */}
                 <div className="dia-horizontal">
                         <p>{datostiempo.hourly.temperature_2m[16]}</p>
                         <p>{datostiempo.hourly.temperature_2m[11]}</p>
@@ -97,19 +97,21 @@ function ClimaHoy(){
                 <br/>
                 <br/>
                 <br/>
+                {/* temperatura estimada durante el día */}
                 <div className="dia-vertical">
-                    <div className="barra b-1"></div>
-                    <div className="barra b-2"></div>
-                    <div className="barra b-3"></div>
-                    <div className="barra b-4"></div>
-                    <div className="barra b-5"></div>
-                    <div className="barra b-6"></div>
-                    <div className="barra b-7"></div>
-                    <div className="barra b-8"></div>
-                    <div className="barra b-9"></div>           
+                    <div className="barra b-1" style={{height:datostiempo.hourly.temperature_2m[0]}}></div>
+                    <div className="barra b-2" style={{height:datostiempo.hourly.temperature_2m[3]}}></div>
+                    <div className="barra b-3" style={{height:datostiempo.hourly.temperature_2m[6]}}></div>
+                    <div className="barra b-4" style={{height:datostiempo.hourly.temperature_2m[9]}}></div>
+                    <div className="barra b-5" style={{height:datostiempo.hourly.temperature_2m[12]}}></div>
+                    <div className="barra b-6" style={{height:datostiempo.hourly.temperature_2m[15]}}></div>
+                    <div className="barra b-7" style={{height:datostiempo.hourly.temperature_2m[18]}}></div>
+                    <div className="barra b-8" style={{height:datostiempo.hourly.temperature_2m[21]}}></div>
+                    <div className="barra b-9" style={{height:datostiempo.hourly.temperature_2m[23]}}></div>           
                 </div>
                 <br/>
                 <hr/>
+                {/* hora estimada durante el día */}
                 <p className="paramDia">{datostiempo.hourly.time[0]} 
                                         {datostiempo.hourly.time[3]}
                                         {datostiempo.hourly.time[6]}
