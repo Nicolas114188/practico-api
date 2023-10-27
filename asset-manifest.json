@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/practico-api/static/css/main.6ae0f747.css",
-    "main.js": "/practico-api/static/js/main.2f5e7248.js",
+    "main.css": "/practico-api/static/css/main.073d47b8.css",
+    "main.js": "/practico-api/static/js/main.fbea6654.js",
     "static/js/787.f66cf832.chunk.js": "/practico-api/static/js/787.f66cf832.chunk.js",
     "static/media/presipitaciones.svg": "/practico-api/static/media/presipitaciones.08541e07e077b7ee7270858706d7407c.svg",
     "static/media/tormenta.svg": "/practico-api/static/media/tormenta.de9d688761f6571ddbbf2f766dd7ea27.svg",
     "static/media/lluvia.svg": "/practico-api/static/media/lluvia.517170b8f779c4ec249dcc81fe484fed.svg",
     "static/media/nublado.svg": "/practico-api/static/media/nublado.e206e5214ce343d08aaa456fb2b2e061.svg",
-    "static/media/soliado.svg": "/practico-api/static/media/soliado.2909a175d21b0bc0a0c5cc4d70ede315.svg",
     "index.html": "/practico-api/index.html",
-    "main.6ae0f747.css.map": "/practico-api/static/css/main.6ae0f747.css.map",
-    "main.2f5e7248.js.map": "/practico-api/static/js/main.2f5e7248.js.map",
+    "static/media/soliado.svg": "/practico-api/static/media/soliado.2909a175d21b0bc0a0c5cc4d70ede315.svg",
+    "main.073d47b8.css.map": "/practico-api/static/css/main.073d47b8.css.map",
+    "main.fbea6654.js.map": "/practico-api/static/js/main.fbea6654.js.map",
     "787.f66cf832.chunk.js.map": "/practico-api/static/js/787.f66cf832.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ae0f747.css",
-    "static/js/main.2f5e7248.js"
+    "static/css/main.073d47b8.css",
+    "static/js/main.fbea6654.js"
   ]
 }
