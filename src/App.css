@@ -1,7 +1,26 @@
+.leaflet-container {
+  width: 100wh; 
+  height: 100vh;
+}
+
+
 .App {
   text-align: left;
   background-color: #518b89;
   color: white;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.clima{
+    width: 50%;
+    height: 70%;
+    
+}
+.Bondi{
+  width: 75%;
+    height: 500%;
+    
 }
 
 

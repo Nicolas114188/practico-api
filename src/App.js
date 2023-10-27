@@ -1,12 +1,19 @@
 import './App.css';
 import ClimaHoy from './Componentes/ClimaHoy';
+import TransporteBondi from './Componentes/TransporteBondi';
 
 function App() {
   return (
     <div className="App">
-        <body className='contenedor'>
+          {/*<div className='clima'>
+            <h2>Clima</h2>
           <ClimaHoy/>
-        </body>
+          </div>*/}
+          <div className='Bondi'>
+          <h2>Transporte de colectivo</h2>
+            <TransporteBondi/>
+          </div>
+        
     </div>
   );
 }

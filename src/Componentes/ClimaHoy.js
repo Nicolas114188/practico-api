@@ -14,7 +14,6 @@ function ClimaHoy(){
         fetch('https://api.open-meteo.com/v1/forecast?latitude=-31.4135&longitude=-64.181&current=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m&hourly=temperature_2m,relativehumidity_2m,rain,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&timezone=America%2FSao_Paulo')
         .then(resp=>resp.json()).then(data=>{
             setDatostiempo(data);
-            //console.log(data);
         }).catch(ex =>{console.error(ex);})
     },[])
     // Consultamos si variable datostiempo es null si lo es mostramos un mensaje que se esta cargando los dato hasta que la api devuelva objecto
