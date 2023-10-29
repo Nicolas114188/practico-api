@@ -1,13 +1,14 @@
+import React from 'react';
+import Select from 'react-select';
 import { MapContainer, TileLayer, Popup, Marker, useMap } from 'react-leaflet'
-import {useRef,useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import datosTransporte from "./BondiPrueba.json"
 
 
 function TransporteBondi()
 {
-  const form=useRef();
   let nomLinea=[];
-  let busquedaLinea;
+  const [filterDataTransport, setFilterDataTransport] = useState(datosTransporte);
   /*const[datosTransporte,setDatosTransporte]=useState(null);
   useEffect(()=>{
     const interval=setInterval(()=>{
@@ -31,31 +32,35 @@ function TransporteBondi()
       <h1>Cargando datos...</h1>
     </div>)
   }else{
+    
     datosTransporte.forEach((item)=>{
       if(!nomLinea.includes(item.route_short_name))
       {
-        nomLinea.push(item.route_short_name);
+        nomLinea.push({"label": item.route_short_name, "value": item.route_short_name});
       }
     })
-    const lineasBusqueda=({value})=>{
-         datosTransporte=datosTransporte.filter(e=>e.route_short_name==value)
+    const lineasBusqueda=(event)=>{
+        
+        setFilterDataTransport(datosTransporte.filter(e=>e.route_short_name===event.value))   
     }
+    
+    
     return(
       <div>
-        <form ref={form}>
-          <select name='Seleccion'  onChange={(e)=>lineasBusqueda(e.target.value)}>
+          {/*<select name='Seleccion'  onChange={(e)=>lineasBusqueda(e)}>
+          <option value={""}>Seleccionar la linea de colectivo </option>
             {nomLinea.map((linea)=>{
               return(<option value={linea}>{linea}</option>)
             })}
-          </select>
-        </form>
+          </select>*/}
+         
         <MapContainer center={[-34.64657, -58.59802]} zoom={11} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {
-        datosTransporte.map((item)=>{
+        filterDataTransport.map((item)=>{
           const posicion=[item.latitude,item.longitude]
           return(<Marker position={posicion}>
             <Popup>
@@ -69,6 +74,10 @@ function TransporteBondi()
         }
         
       </MapContainer>
+      <Select
+            options={nomLinea}
+            onChange={(e)=>lineasBusqueda(e)}
+         />
       </div>
     );
   }

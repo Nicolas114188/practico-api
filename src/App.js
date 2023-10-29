@@ -1,6 +1,6 @@
 import './App.css';
-import ClimaHoy from './Componentes/ClimaHoy';
-import TransporteBondi from './Componentes/TransporteBondi';
+import ClimaHoy from './Componentes/ComponenteClima/ClimaHoy';
+import TransporteBondi from './Componentes/ComponenteBondi/TransporteBondi';
 
 function App() {
   return (
