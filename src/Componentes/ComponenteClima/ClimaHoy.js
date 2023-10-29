@@ -1,11 +1,11 @@
 import React from "react";
 import "./climaHoy.css";
 import imagenes from "./imagenes";
-import datosClima from "./api.json";
 import {useState, useEffect} from "react";
 
 function ClimaHoy(){
     const [datostiempo, setDatostiempo] =useState(null);
+    const [calidadAire, setCalidadAire]=useState(null);
     let pronostico="";
     let imgPronostico="";
     let numLluvia=0;
@@ -16,8 +16,15 @@ function ClimaHoy(){
             setDatostiempo(data);
         }).catch(ex =>{console.error(ex);})
     },[])
+
+    useEffect(()=>{
+        fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=52.52&longitude=13.41&current=european_aqi&hourly=european_aqi&timezone=America%2FSao_Paulo')
+        .then(resp=>resp.json()).then(data=>{
+            setCalidadAire(data);
+        }).catch(ex=>{console(ex);})
+    },[])
     // Consultamos si variable datostiempo es null si lo es mostramos un mensaje que se esta cargando los dato hasta que la api devuelva objecto
-    if(datostiempo==null)
+    if(datostiempo==null||calidadAire==null)
     {
         return(
             <div>
@@ -147,7 +154,7 @@ function ClimaHoy(){
                         </div>
                         <div className="ser ser-6">
                             <p>Calidad del aire</p>
-                            <p>{datosClima.hourly.european_aqi[18]} </p>
+                            <p>{calidadAire.current.european_aqi} </p>
                         </div>
                 </div>             
         </div>

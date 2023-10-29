@@ -8,7 +8,6 @@ import '../ComponenteBondi/TransporteBondi.css'
 function TransporteBondi()
 {
   let nomLinea=[];
-  /*const [filterDataTransport, setFilterDataTransport] = useState(datosTransporte);*/
   const[datosTransporte,setDatosTransporte]=useState(null);
   useEffect(()=>{
     const interval=setInterval(()=>{
