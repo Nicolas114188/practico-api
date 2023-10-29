@@ -1,4 +1,4 @@
-# Exposición de la pagina de clima con  datos Api de clima
+# Pagina de clima con  datos Api de clima y Transporte de colectivo
 En esta página se logró por medio de un Api de clima convertir en Json, con esto valores en objeto modelar el clima en la fecha actual.
 Ademas se agrego Colectivos representativo de la ciudad de Bs As usando Api desde la misma.
 
