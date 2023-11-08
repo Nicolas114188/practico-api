@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { MapContainer, TileLayer, Popup, Marker, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet'
 import {useState, useEffect} from "react";
 import '../ComponenteBondi/TransporteBondi.css'
 
@@ -8,7 +8,9 @@ import '../ComponenteBondi/TransporteBondi.css'
 function TransporteBondi()
 {
   let nomLinea=[];
+  let varSelect=[];
   const[datosTransporte,setDatosTransporte]=useState(null);
+  //const[filtroTransporte,setFiltroTransporte]=useState(null);
   useEffect(()=>{
     const interval=setInterval(()=>{
     fetch('https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?agency_id=82&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6')
@@ -16,19 +18,27 @@ function TransporteBondi()
     }, 31000);
   return ()=> clearInterval(interval);
   },[]);
+ /* useEffect(()=>{
+    setFiltroTransporte(datosTransporte);
+  },[]);*/
+
   if(datosTransporte==null)
   {
     return(<div>
       <h1>Cargando datos...</h1>
     </div>);
   }else{
-    
+
     datosTransporte.forEach((item)=>{
-      if(!nomLinea.includes(item.route_short_name))
-      {
-        nomLinea.push({"label": item.route_short_name, "value": item.route_short_name});
-      }
+      //ver como funciona include para tirar las lineas
+        if(!nomLinea.includes(item.route_short_name)){
+          nomLinea.push(item.route_short_name);
+        }
     })
+    nomLinea.forEach((item)=>{
+      varSelect.push({"label": item, "value": item});
+    })
+    
     const lineasBusqueda=(event)=>{
         
         setDatosTransporte(datosTransporte.filter(e=>e.route_short_name===event.value))   
@@ -58,7 +68,7 @@ function TransporteBondi()
         
       </MapContainer>
       <Select
-            options={nomLinea}
+            options={varSelect}
             onChange={(e)=>lineasBusqueda(e)}
          />
       </div>

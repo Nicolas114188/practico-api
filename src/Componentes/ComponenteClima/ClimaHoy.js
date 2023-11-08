@@ -1,21 +1,26 @@
 import React from "react";
 import "./climaHoy.css";
 import imagenes from "./imagenes";
+import ciudadClima from "./ciudadClima.json";
 import {useState, useEffect} from "react";
+import Select from "react-select";
 
 function ClimaHoy(){
     const [datostiempo, setDatostiempo] =useState(null);
     const [calidadAire, setCalidadAire]=useState(null);
+    const [ciudad, setCiudad]=useState(ciudadClima[0]);
     let pronostico="";
     let imgPronostico="";
     let numLluvia=0;
+    let horaClima=[];
     // Este useEffect permite traer datos del clima desde la Api y es convertido en formato json "objecto"
     useEffect(()=>{
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=-31.4135&longitude=-64.181&current=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m&hourly=temperature_2m,relativehumidity_2m,rain,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&timezone=America%2FSao_Paulo')
+        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ciudad.latitude}&longitude=${ciudad.longitude}&current=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m&hourly=temperature_2m,relativehumidity_2m,rain,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&timezone=America%2FSao_Paulo`)
         .then(resp=>resp.json()).then(data=>{
             setDatostiempo(data);
+            
         }).catch(ex =>{console.error(ex);})
-    },[])
+    },[ciudad])
 
     useEffect(()=>{
         fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=52.52&longitude=13.41&current=european_aqi&hourly=european_aqi&timezone=America%2FSao_Paulo')
@@ -23,7 +28,8 @@ function ClimaHoy(){
             setCalidadAire(data);
         }).catch(ex=>{console(ex);})
     },[])
-    // Consultamos si variable datostiempo es null si lo es mostramos un mensaje que se esta cargando los dato hasta que la api devuelva objecto
+    // Consultamos si variable datostiempo, calidadAire es null si lo es mostramos un mensaje que se esta cargando los dato hasta que la 
+    //api devuelva objecto
     if(datostiempo==null||calidadAire==null)
     {
         return(
@@ -33,6 +39,13 @@ function ClimaHoy(){
         );
     }else
     {
+        //crear lista hora promedio de clima
+        for(let i=0;i<24;i=i+3)
+        {
+            horaClima.push(datostiempo.hourly.time[i].slice(11))
+        }
+        horaClima.push(datostiempo.hourly.time[23].slice(11))
+        
         // Se pregunta si como es el pronostico con if  else
         if(datostiempo.current.cloudcover>0)
              {
@@ -62,10 +75,22 @@ function ClimaHoy(){
                 pronostico="soliado";
                 imgPronostico=imagenes.soliado;
              }
+
+             const selecEleccion=(event)=>{
+                setCiudad(ciudadClima[event.value-1]);
+             }
+             console.log(ciudad.label);
       // retorna los datos desde api pronostico del clima             
     return(
         <div className="contenedor">
             <div className="item-1">
+                    <div className="seleccionProvincia">
+                        <Select
+                            defaultValue={ciudadClima[0]}
+                            options={ciudadClima.map(elemento=>({label: elemento.label, value: elemento.value}))}
+                            onChange={selecEleccion}
+                        />
+                    </div>
                     <div className="Actualidad">
                         Actualidad
                         <img src={imgPronostico} alt={pronostico}/>
@@ -118,17 +143,13 @@ function ClimaHoy(){
                 <br/>
                 <hr/>
                 {/* hora estimada durante el día */}
-                <p className="paramDia">{datostiempo.hourly.time[0]} 
-                                        {datostiempo.hourly.time[3]}
-                                        {datostiempo.hourly.time[6]}
-                                        {datostiempo.hourly.time[9]}
-                                        {datostiempo.hourly.time[12]}
-                                        {datostiempo.hourly.time[15]}
-                                        {datostiempo.hourly.time[18]}
-                                        {datostiempo.hourly.time[21]}
-                                        {datostiempo.hourly.time[23]}</p>
+                {horaClima.map((elemento)=>{
+                    return(<strong>{elemento+" "}</strong>)
+                })}
+                
             </div>
                 <div className="item-4">
+                        
                         Datos:
                         <br/>
                         <div className="ser ser-1">
@@ -141,8 +162,8 @@ function ClimaHoy(){
                         </div>
                         <div className="ser ser-3">
                             <p>Hora del sol</p>
-                            <p>Amanacer: {datostiempo.daily.sunrise[0]}</p>
-                            <p>Atardecer: {datostiempo.daily.sunset[0]}</p>
+                            <p>Amanacer: {datostiempo.daily.sunrise[0].slice(11)}</p>
+                            <p>Atardecer: {datostiempo.daily.sunset[0].slice(11)}</p>
                         </div>
                         <div className="ser ser-4">
                             <p>Humedad</p>
@@ -156,7 +177,10 @@ function ClimaHoy(){
                             <p>Calidad del aire</p>
                             <p>{calidadAire.current.european_aqi} </p>
                         </div>
-                </div>             
+                </div> 
+            {/*<div className="item-5">
+            <Select/>
+            </div>*/}                
         </div>
     );
     }

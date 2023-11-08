@@ -1,0 +1,33 @@
+[
+    {
+        "value": "1",
+        "label": "Cordoba",
+        "latitude": "-31.4135",
+        "longitude": "-64.181"
+    },
+    {
+        "value": "2",
+        "label": "Buenos Aires capital",
+        "latitude": "-34.6131",
+        "longitude": "-58,3772"
+    },
+    {
+        "value": "3",
+        "label": "Santa Fe",
+        "latitude": "-31.6488",
+        "longitude": "-60.7087"
+    },
+    {
+        "value": "4",
+        "label": "Salta",
+        "latitude": "-24.7859",
+        "longitude": "-65.4117"
+    },
+    {
+        "value": "5",
+        "label": "Tartagal (salta)",
+        "latitude": "-22.5164",
+        "longitude": "-63.8013"    
+    }
+
+]
