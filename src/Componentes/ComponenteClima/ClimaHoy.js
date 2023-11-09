@@ -13,11 +13,14 @@ function ClimaHoy(){
     let imgPronostico="";
     let numLluvia=0;
     let horaClima=[];
+    let x="-31.4135";
+    let y="-64.181";
     // Este useEffect permite traer datos del clima desde la Api y es convertido en formato json "objecto"
     useEffect(()=>{
         fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ciudad.latitude}&longitude=${ciudad.longitude}&current=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m&hourly=temperature_2m,relativehumidity_2m,rain,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max&timezone=America%2FSao_Paulo`)
         .then(resp=>resp.json()).then(data=>{
             setDatostiempo(data);
+            console.log(ciudad.label);
             
         }).catch(ex =>{console.error(ex);})
     },[ciudad])
@@ -77,9 +80,11 @@ function ClimaHoy(){
              }
 
              const selecEleccion=(event)=>{
-                setCiudad(ciudadClima[event.value-1]);
+               setCiudad(ciudadClima[event.value-1]);
+               //x=ciudadClima[event.value-1].latitude;
+               //y=ciudadClima[event.value-1].longitude;
              }
-             console.log(ciudad.label);
+             //console.log(ciudad.label);
       // retorna los datos desde api pronostico del clima             
     return(
         <div className="contenedor">

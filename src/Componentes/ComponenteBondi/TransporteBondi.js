@@ -17,7 +17,7 @@ function TransporteBondi()
     .then(resp=>resp.json()).then(data=>{setDatosTransporte(data);}).catch(ex=>{console.error(ex);})
     }, 31000);
   return ()=> clearInterval(interval);
-  },[]);
+  },[datosTransporte]);
  /* useEffect(()=>{
     setFiltroTransporte(datosTransporte);
   },[]);*/

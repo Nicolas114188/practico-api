@@ -1,6 +1,6 @@
 import './App.css';
 import ClimaHoy from './Componentes/ComponenteClima/ClimaHoy';
-//import TransporteBondi from './Componentes/ComponenteBondi/TransporteBondi';
+import TransporteBondi from './Componentes/ComponenteBondi/TransporteBondi';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
           </div>
           <div className='Bondi'>
           <h2>Transporte de colectivo</h2>
-          {/*   <TransporteBondi/>*/}
+            <TransporteBondi/>
           </div>
         
     </div>
