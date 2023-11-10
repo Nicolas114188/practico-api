@@ -4,17 +4,18 @@ Ademas se agrego Colectivos representativo de la ciudad de Bs As usando Api desd
 
 ![imagen](./src/Componentes/ComponenteClima/Imagenes/ImgPagina.jpg)
 
-## Complicaciones y items a mejorar:
-* Presentación falta mejoras.
-* El dato de del clima calidad de aire de clima
+## items a mejorar:
+* Presentación falta mejoras más estilos.
+* Grafico del clima
 * Se instalo una libreria Select para puede elejir la linea de colectivo el usuario se obtuvo complicaciones falta mejorar.
-* se complico para obtener los datos de la Api transporte
-* Mejorar y aprender más sobre componente de la libreria de mapa Leaflet 
+* mostrar los colectivo por linea y empresa.
+* Mejorar y aprender más sobre componente de la libreria de mapa Leaflet. 
 
 
 ## Mejoras:
 * Se realizo mejoras en el grafico de barra de la pagina con datos de la Api
 * En la imagen toma datos del estado del tiempo actual.
+* se agrego un Select que selecciona el clima a ciudades (desmostrativas) de la Argentina 
 
 ## Construido con 🛠️
 _las herramientas que se utilizaron para crear el proyecto_
